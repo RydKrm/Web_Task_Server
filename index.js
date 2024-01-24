@@ -9,14 +9,14 @@ const userRouter=require('./users');
 app.use(cors())
 app.use(express.json())
 
-  app.use('/',userRouter);
+  app.use('/api',userRouter);
 
 
 
 app.get('/', (req, res) => {
-    res.send({status:true,text:'Empower Rise Website Running!'});
+    res.send({status:true,text:' Website Running!'});
 })
 
 app.listen(port, () => {
-    console.log(`Empower Rise Website listening on port ${port}`)
+    console.log(` Website listening on port ${port}`)
 })
