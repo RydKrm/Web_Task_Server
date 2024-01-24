@@ -2,10 +2,10 @@ const { ObjectId } = require('mongodb');
 const client = require('./client');
 const express = require('express');
 const userRouter = express.Router();
- function run() {
+async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-         client.connect();
+        await client.connect();
         const usersCollection = client.db('empowerRise').collection('logInUsers');
 
         userRouter.route('/login')
@@ -19,8 +19,9 @@ const userRouter = express.Router();
         } else {
            await usersCollection.insertOne({email,password});
            console.log("User registered successfully");
-           res.send(true);
+        res.send(true);
         }
+
         } catch (error) {
         console.error("Error inserting login data:", error.message);
         }
@@ -50,7 +51,7 @@ const userRouter = express.Router();
         })
      
         // Send a ping to confirm a successful connection
-         client.db("admin").command({ ping: 1 });
+        await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error
