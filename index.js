@@ -17,6 +17,12 @@ app.get('/', (req, res) => {
     res.send({status:true,text:' Website Running!'});
 })
 
+app.post('/test', (req, res) => {
+    res.send({status:true,text:' testing!'});
+})
+
+
+
 app.listen(port, () => {
     console.log(` Website listening on port ${port}`)
 })
