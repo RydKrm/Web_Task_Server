@@ -11,8 +11,6 @@ app.use(express.json())
 
   app.use('/api',userRouter);
 
-
-
 app.get('/', (req, res) => {
     res.send({status:true,text:' Website Running!'});
 })
